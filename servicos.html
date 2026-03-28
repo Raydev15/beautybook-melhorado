@@ -3,360 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços — BeautyBook</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Serviços — Agenda Glow Up</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- ===== CABEÇALHO ===== -->
+    <!-- CABEÇALHO -->
     <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icone-box">
-                    <i class="fa-solid fa-spa"></i>
-                </div>
-                <span class="logo-texto">Beauty<span>Book</span></span>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="servicos.html" class="ativo">Serviços</a></li>
-                    <li><a href="agendamento.html">Agendar</a></li>
-                </ul>
-            </nav>
-        </div>
+        <a href="index.html" class="logo">
+            <div class="logo-icone"><i class="fa-solid fa-spa"></i></div>
+            Agenda <span>Glow Up</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="servicos.html" class="ativo">Serviços</a></li>
+                <li><a href="agendamento.html">Agendar</a></li>
+                <li><a href="redes.html">Redes Sociais</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- ===== HERO DA PÁGINA ===== -->
-    <div class="page-hero">
+    <!-- HERO -->
+    <div class="hero">
         <h1>Nossos <span>Serviços</span></h1>
-        <p>Conheça todos os procedimentos disponíveis, com preços e duração estimada de cada um.</p>
+        <p>Catálogo completo com preços transparentes. Sem surpresas, só beleza!</p>
     </div>
 
-    <!-- ===== SERVIÇOS — UNHAS ===== -->
+    <!-- CATÁLOGO -->
     <section>
         <div class="container">
             <div class="titulo-secao">
-                <h2>💅 Unhas</h2>
-                <div class="linha-divisoria"></div>
-                <p>Manicure e pedicure com acabamento impecável e produtos de qualidade.</p>
+                <h2>Catálogo <span>Completo</span></h2>
+                <p>Todos os serviços com preços visíveis. Escolha e agende em segundos.</p>
             </div>
-
             <div class="grid-3">
+
                 <div class="servico-card">
                     <div class="servico-topo">
-                        <span class="servico-icone"><i class="fa-solid fa-hand-sparkles"></i></span>
-                        <h3>Manicure</h3>
+                        <div class="servico-icone"><i class="fa-solid fa-scissors"></i></div>
+                        <h3>Cabelo</h3>
                     </div>
                     <div class="servico-corpo">
-                        <p>Cuidado completo das unhas das mãos com lixamento, cutícula e esmaltação.</p>
+                        <p>Cortes modernos, colorações e tratamentos por especialistas.</p>
                         <ul class="servico-lista">
-                            <li>Esmaltação comum <span class="servico-preco">R$ 30</span></li>
-                            <li>Esmaltação em gel <span class="servico-preco">R$ 60</span></li>
-                            <li>Fibra de vidro <span class="servico-preco">R$ 90</span></li>
-                            <li>Unhas postiças <span class="servico-preco">R$ 80</span></li>
+                            <li><span>Corte Feminino</span><span class="servico-preco">R$ 60</span></li>
+                            <li><span>Coloração Completa</span><span class="servico-preco">R$ 120</span></li>
+                            <li><span>Hidratação Profunda</span><span class="servico-preco">R$ 80</span></li>
+                            <li><span>Escova Progressiva</span><span class="servico-preco">R$ 50</span></li>
                         </ul>
-                        <a href="agendamento.html" class="btn btn-primario" style="width: 100%; text-align: center; display: block;">Agendar</a>
+                        <a href="agendamento.html" class="btn btn-primario" style="width:100%; text-align:center; display:block;"><i class="fa-solid fa-calendar-plus"></i> Agendar</a>
                     </div>
                 </div>
 
                 <div class="servico-card">
                     <div class="servico-topo">
-                        <span class="servico-icone"><i class="fa-solid fa-shoe-prints"></i></span>
-                        <h3>Pedicure</h3>
+                        <div class="servico-icone"><i class="fa-solid fa-hand-sparkles"></i></div>
+                        <h3>Unhas</h3>
                     </div>
                     <div class="servico-corpo">
-                        <p>Tratamento completo dos pés com esfoliação, hidratação e esmaltação.</p>
+                        <p>Manicure, pedicure e nail art para unhas impecáveis.</p>
                         <ul class="servico-lista">
-                            <li>Pedicure simples <span class="servico-preco">R$ 40</span></li>
-                            <li>Pedicure com spa <span class="servico-preco">R$ 65</span></li>
-                            <li>Esmaltação em gel <span class="servico-preco">R$ 70</span></li>
-                            <li>Tratamento de calos <span class="servico-preco">R$ 50</span></li>
+                            <li><span>Manicure Completa</span><span class="servico-preco">R$ 35</span></li>
+                            <li><span>Pedicure Completa</span><span class="servico-preco">R$ 40</span></li>
+                            <li><span>Unhas em Gel</span><span class="servico-preco">R$ 90</span></li>
+                            <li><span>Nail Art</span><span class="servico-preco">R$ 60</span></li>
                         </ul>
-                        <a href="agendamento.html" class="btn btn-primario" style="width: 100%; text-align: center; display: block;">Agendar</a>
+                        <a href="agendamento.html" class="btn btn-primario" style="width:100%; text-align:center; display:block;"><i class="fa-solid fa-calendar-plus"></i> Agendar</a>
                     </div>
                 </div>
 
                 <div class="servico-card">
                     <div class="servico-topo">
-                        <span class="servico-icone"><i class="fa-solid fa-star"></i></span>
-                        <h3>Combo Mãos + Pés</h3>
+                        <div class="servico-icone"><i class="fa-solid fa-eye"></i></div>
+                        <h3>Sobrancelha</h3>
                     </div>
                     <div class="servico-corpo">
-                        <p>Pacote completo com manicure e pedicure com desconto especial.</p>
+                        <p>Design, henna e laminação para sobrancelhas perfeitas.</p>
                         <ul class="servico-lista">
-                            <li>Combo simples <span class="servico-preco">R$ 60</span></li>
-                            <li>Combo gel <span class="servico-preco">R$ 110</span></li>
-                            <li>Combo spa completo <span class="servico-preco">R$ 130</span></li>
-                            <li>Combo premium <span class="servico-preco">R$ 160</span></li>
+                            <li><span>Design de Sobrancelha</span><span class="servico-preco">R$ 25</span></li>
+                            <li><span>Henna</span><span class="servico-preco">R$ 35</span></li>
+                            <li><span>Laminação</span><span class="servico-preco">R$ 70</span></li>
+                            <li><span>Micropigmentação</span><span class="servico-preco">R$ 350</span></li>
                         </ul>
-                        <a href="agendamento.html" class="btn btn-primario" style="width: 100%; text-align: center; display: block;">Agendar</a>
+                        <a href="agendamento.html" class="btn btn-primario" style="width:100%; text-align:center; display:block;"><i class="fa-solid fa-calendar-plus"></i> Agendar</a>
                     </div>
                 </div>
+
+                <div class="servico-card">
+                    <div class="servico-topo">
+                        <div class="servico-icone"><i class="fa-solid fa-face-smile-beam"></i></div>
+                        <h3>Estética Facial</h3>
+                    </div>
+                    <div class="servico-corpo">
+                        <p>Tratamentos para pele saudável e radiante.</p>
+                        <ul class="servico-lista">
+                            <li><span>Limpeza de Pele</span><span class="servico-preco">R$ 90</span></li>
+                            <li><span>Hidratação Facial</span><span class="servico-preco">R$ 80</span></li>
+                            <li><span>Peeling Facial</span><span class="servico-preco">R$ 110</span></li>
+                            <li><span>Drenagem Facial</span><span class="servico-preco">R$ 95</span></li>
+                        </ul>
+                        <a href="agendamento.html" class="btn btn-primario" style="width:100%; text-align:center; display:block;"><i class="fa-solid fa-calendar-plus"></i> Agendar</a>
+                    </div>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-topo">
+                        <div class="servico-icone"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h3>Maquiagem</h3>
+                    </div>
+                    <div class="servico-corpo">
+                        <p>Maquiagem profissional para eventos e ocasiões especiais.</p>
+                        <ul class="servico-lista">
+                            <li><span>Maquiagem Social</span><span class="servico-preco">R$ 100</span></li>
+                            <li><span>Maquiagem para Festa</span><span class="servico-preco">R$ 120</span></li>
+                            <li><span>Maquiagem Noiva</span><span class="servico-preco">R$ 200</span></li>
+                        </ul>
+                        <a href="agendamento.html" class="btn btn-primario" style="width:100%; text-align:center; display:block;"><i class="fa-solid fa-calendar-plus"></i> Agendar</a>
+                    </div>
+                </div>
+
+                <div class="servico-card">
+                    <div class="servico-topo">
+                        <div class="servico-icone"><i class="fa-solid fa-leaf"></i></div>
+                        <h3>Depilação</h3>
+                    </div>
+                    <div class="servico-corpo">
+                        <p>Depilação com cera quente ou fria para pele lisa.</p>
+                        <ul class="servico-lista">
+                            <li><span>Buço</span><span class="servico-preco">R$ 15</span></li>
+                            <li><span>Axila</span><span class="servico-preco">R$ 20</span></li>
+                            <li><span>Perna Completa</span><span class="servico-preco">R$ 60</span></li>
+                            <li><span>Corpo Completo</span><span class="servico-preco">R$ 130</span></li>
+                        </ul>
+                        <a href="agendamento.html" class="btn btn-primario" style="width:100%; text-align:center; display:block;"><i class="fa-solid fa-calendar-plus"></i> Agendar</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ===== SERVIÇOS — CABELO ===== -->
-    <section style="background-color: var(--cor-secundaria);">
+    <!-- TABELA DE PROBLEMAS -->
+    <section class="secao-rosa">
         <div class="container">
             <div class="titulo-secao">
-                <h2><i class="fa-solid fa-scissors" style="color: var(--cor-destaque);"></i> Cabelo</h2>
-                <div class="linha-divisoria"></div>
-                <p>Cortes modernos, colorações e tratamentos para todos os tipos de cabelo.</p>
+                <h2>Problemas e <span>Soluções</span></h2>
             </div>
-
-            <div class="grid-3">
-                <div class="servico-card">
-                    <div class="servico-topo">
-                        <span class="servico-icone"><i class="fa-solid fa-scissors"></i></span>
-                        <h3>Corte</h3>
-                    </div>
-                    <div class="servico-corpo">
-                        <p>Cortes modernos e personalizados para valorizar seu rosto e estilo.</p>
-                        <ul class="servico-lista">
-                            <li>Corte simples <span class="servico-preco">R$ 50</span></li>
-                            <li>Corte + escova <span class="servico-preco">R$ 80</span></li>
-                            <li>Corte + hidratação <span class="servico-preco">R$ 100</span></li>
-                            <li>Corte infantil <span class="servico-preco">R$ 35</span></li>
-                        </ul>
-                        <a href="agendamento.html" class="btn btn-primario" style="width: 100%; text-align: center; display: block;">Agendar</a>
-                    </div>
-                </div>
-
-                <div class="servico-card">
-                    <div class="servico-topo">
-                        <span class="servico-icone"><i class="fa-solid fa-palette"></i></span>
-                        <h3>Coloração</h3>
-                    </div>
-                    <div class="servico-corpo">
-                        <p>Coloração profissional com produtos de alta qualidade para todos os tons.</p>
-                        <ul class="servico-lista">
-                            <li>Coloração simples <span class="servico-preco">R$ 120</span></li>
-                            <li>Mechas <span class="servico-preco">R$ 180</span></li>
-                            <li>Luzes <span class="servico-preco">R$ 200</span></li>
-                            <li>Balayage <span class="servico-preco">R$ 280</span></li>
-                        </ul>
-                        <a href="agendamento.html" class="btn btn-primario" style="width: 100%; text-align: center; display: block;">Agendar</a>
-                    </div>
-                </div>
-
-                <div class="servico-card">
-                    <div class="servico-topo">
-                        <span class="servico-icone"><i class="fa-solid fa-spa"></i></span>
-                        <h3>Tratamentos</h3>
-                    </div>
-                    <div class="servico-corpo">
-                        <p>Tratamentos capilares para recuperar a saúde e brilho dos fios.</p>
-                        <ul class="servico-lista">
-                            <li>Hidratação <span class="servico-preco">R$ 70</span></li>
-                            <li>Botox capilar <span class="servico-preco">R$ 150</span></li>
-                            <li>Progressiva <span class="servico-preco">R$ 200</span></li>
-                            <li>Cauterização <span class="servico-preco">R$ 130</span></li>
-                        </ul>
-                        <a href="agendamento.html" class="btn btn-primario" style="width: 100%; text-align: center; display: block;">Agendar</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SERVIÇOS — SOBRANCELHA E ESTÉTICA ===== -->
-    <section>
-        <div class="container">
-            <div class="titulo-secao">
-                <h2><i class="fa-solid fa-eye" style="color: var(--cor-destaque);"></i> Sobrancelha & Estética</h2>
-                <div class="linha-divisoria"></div>
-                <p>Realce sua beleza natural com procedimentos de design e estética facial.</p>
-            </div>
-
-            <div class="grid-3">
-                <div class="servico-card">
-                    <div class="servico-topo">
-                        <span class="servico-icone"><i class="fa-solid fa-eye"></i></span>
-                        <h3>Design de Sobrancelha</h3>
-                    </div>
-                    <div class="servico-corpo">
-                        <p>Modelagem perfeita para valorizar o olhar e harmonizar o rosto.</p>
-                        <ul class="servico-lista">
-                            <li>Design com linha <span class="servico-preco">R$ 25</span></li>
-                            <li>Design com henna <span class="servico-preco">R$ 45</span></li>
-                            <li>Micropigmentação <span class="servico-preco">R$ 350</span></li>
-                            <li>Laminação <span class="servico-preco">R$ 80</span></li>
-                        </ul>
-                        <a href="agendamento.html" class="btn btn-primario" style="width: 100%; text-align: center; display: block;">Agendar</a>
-                    </div>
-                </div>
-
-                <div class="servico-card">
-                    <div class="servico-topo">
-                        <span class="servico-icone"><i class="fa-solid fa-face-smile"></i></span>
-                        <h3>Limpeza de Pele</h3>
-                    </div>
-                    <div class="servico-corpo">
-                        <p>Limpeza profunda para remover impurezas e renovar a pele do rosto.</p>
-                        <ul class="servico-lista">
-                            <li>Limpeza simples <span class="servico-preco">R$ 80</span></li>
-                            <li>Limpeza profunda <span class="servico-preco">R$ 130</span></li>
-                            <li>Limpeza + hidratação <span class="servico-preco">R$ 160</span></li>
-                            <li>Peeling facial <span class="servico-preco">R$ 120</span></li>
-                        </ul>
-                        <a href="agendamento.html" class="btn btn-primario" style="width: 100%; text-align: center; display: block;">Agendar</a>
-                    </div>
-                </div>
-
-                <div class="servico-card">
-                    <div class="servico-topo">
-                        <span class="servico-icone"><i class="fa-solid fa-eye-low-vision"></i></span>
-                        <h3>Cílios</h3>
-                    </div>
-                    <div class="servico-corpo">
-                        <p>Realce o olhar com extensão de cílios e lifting para um visual impactante.</p>
-                        <ul class="servico-lista">
-                            <li>Extensão fio a fio <span class="servico-preco">R$ 180</span></li>
-                            <li>Volume russo <span class="servico-preco">R$ 250</span></li>
-                            <li>Lifting de cílios <span class="servico-preco">R$ 100</span></li>
-                            <li>Manutenção <span class="servico-preco">R$ 90</span></li>
-                        </ul>
-                        <a href="agendamento.html" class="btn btn-primario" style="width: 100%; text-align: center; display: block;">Agendar</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== TABELA DE PROBLEMAS ===== -->
-    <section style="background-color: var(--cor-secundaria);">
-        <div class="container">
-            <div class="titulo-secao">
-                <h2>Problemas Reais e <span>Soluções</span></h2>
-                <div class="linha-divisoria"></div>
-                <p>Análise completa dos desafios do setor de estética — visão do cliente e da empresa.</p>
-            </div>
-
-            <table class="tabela-problemas">
+            <table class="tabela-comparativa">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Problema Identificado</th>
-                        <th>Perspectiva</th>
-                        <th>Solução BeautyBook</th>
+                        <th>Problema</th>
+                        <th>Quem sofre</th>
+                        <th>Solução no Agenda Glow Up</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td style="color: var(--cor-destaque); font-weight: 700;">01</td>
-                        <td>Dificuldade de agendar por telefone fora do horário comercial</td>
-                        <td><span class="tag-cliente">Cliente</span></td>
-                        <td>Agendamento online disponível 24h, 7 dias por semana</td>
-                    </tr>
-                    <tr>
-                        <td style="color: var(--cor-destaque); font-weight: 700;">02</td>
-                        <td>Falta de transparência nos preços dos serviços</td>
-                        <td><span class="tag-cliente">Cliente</span></td>
-                        <td>Tabela de preços completa e visível antes do agendamento</td>
-                    </tr>
-                    <tr>
-                        <td style="color: var(--cor-destaque); font-weight: 700;">03</td>
-                        <td>Esquecimento de horários marcados (faltas)</td>
-                        <td><span class="tag-cliente">Cliente</span></td>
-                        <td>Confirmação de agendamento com resumo detalhado do horário</td>
-                    </tr>
-                    <tr>
-                        <td style="color: var(--cor-destaque); font-weight: 700;">04</td>
-                        <td>Desorganização e conflitos na agenda do salão</td>
-                        <td><span class="tag-empresa">Empresa</span></td>
-                        <td>Sistema centralizado que gerencia horários e evita sobreposições</td>
-                    </tr>
-                    <tr>
-                        <td style="color: var(--cor-destaque); font-weight: 700;">05</td>
-                        <td>Dificuldade de fidelizar e reter clientes</td>
-                        <td><span class="tag-empresa">Empresa</span></td>
-                        <td>Histórico de agendamentos e canal direto de comunicação com clientes</td>
-                    </tr>
-                    <tr>
-                        <td style="color: var(--cor-destaque); font-weight: 700;">06</td>
-                        <td>Tempo perdido com ligações para confirmar horários</td>
-                        <td><span class="tag-empresa">Empresa</span></td>
-                        <td>Confirmação automática via sistema, sem necessidade de ligar</td>
-                    </tr>
-                    <tr>
-                        <td style="color: var(--cor-destaque); font-weight: 700;">07</td>
-                        <td>Clientes sem saber quais serviços estão disponíveis</td>
-                        <td><span class="tag-cliente">Cliente</span></td>
-                        <td>Catálogo completo e organizado por categoria no site</td>
-                    </tr>
+                    <tr><td>Fila de espera sem previsão</td><td>Cliente</td><td>Agendamento com horário fixo garantido</td></tr>
+                    <tr><td>Preços não divulgados</td><td>Cliente</td><td>Tabela de preços transparente e visível</td></tr>
+                    <tr><td>Esquecimento de horários</td><td>Cliente e Salão</td><td>Confirmação com todos os detalhes</td></tr>
+                    <tr><td>Gestão manual de agenda</td><td>Salão</td><td>Sistema digital organizado</td></tr>
+                    <tr><td>Falta de visibilidade online</td><td>Salão</td><td>Site profissional com redes sociais</td></tr>
                 </tbody>
             </table>
-
-            <div class="centralizado margem-topo">
-                <a href="agendamento.html" class="btn btn-primario">Agendar Meu Horário</a>
-            </div>
         </div>
     </section>
 
-    <!-- ===== PERGUNTAS FREQUENTES ===== -->
+    <!-- FAQ -->
     <section>
         <div class="container">
             <div class="titulo-secao">
                 <h2>Perguntas <span>Frequentes</span></h2>
-                <div class="linha-divisoria"></div>
-                <p>Dúvidas sobre os serviços? Veja as respostas mais comuns abaixo.</p>
             </div>
-
             <div class="grid-2">
-
-                <div class="card">
-                    <h3>⏱️ Quanto tempo dura cada serviço?</h3>
-                    <p>O tempo varia por serviço: manicure simples leva cerca de 40 minutos, pedicure 50 minutos, design de sobrancelha 20 minutos e coloração pode levar até 2 horas. Ao agendar, você verá a duração estimada.</p>
+                <div class="card faq-card">
+                    <h3><i class="fa-solid fa-tag" style="color:var(--cor-primaria); margin-right:8px;"></i>Os preços podem variar?</h3>
+                    <p>Os preços exibidos são a partir de. Serviços mais complexos podem ter valor diferente. Consulte antes de agendar.</p>
                 </div>
-
-                <div class="card">
-                    <h3>🌿 Os produtos usados são de qualidade?</h3>
-                    <p>Sim! Trabalhamos apenas com marcas profissionais e produtos de alta qualidade, incluindo esmaltes hipoalergênicos e tintas sem amônia para quem tem sensibilidade.</p>
+                <div class="card faq-card">
+                    <h3><i class="fa-solid fa-layer-group" style="color:var(--cor-primaria); margin-right:8px;"></i>Posso combinar serviços no mesmo dia?</h3>
+                    <p>Sim! Você pode fazer manicure + sobrancelha no mesmo dia. Basta informar no agendamento.</p>
                 </div>
-
-                <div class="card">
-                    <h3>👶 Atendem crianças?</h3>
-                    <p>Sim! Temos serviços específicos para crianças, como corte infantil (R$ 35) e esmaltação infantil. Recomendamos agendar horários no período da manhã para os pequenos.</p>
+                <div class="card faq-card">
+                    <h3><i class="fa-solid fa-star" style="color:var(--cor-primaria); margin-right:8px;"></i>Vocês usam produtos de qualidade?</h3>
+                    <p>Sim! Trabalhamos com marcas profissionais para garantir os melhores resultados.</p>
                 </div>
-
-                <div class="card">
-                    <h3>📸 Posso ver fotos dos trabalhos realizados?</h3>
-                    <p>Sim! Siga nosso Instagram @beautybook para ver o portfólio completo com fotos reais dos serviços realizados pelas nossas profissionais.</p>
+                <div class="card faq-card">
+                    <h3><i class="fa-solid fa-ring" style="color:var(--cor-primaria); margin-right:8px;"></i>Atendem noivas e eventos?</h3>
+                    <p>Sim! Temos pacotes especiais para noivas e madrinhas. Entre em contato pelo WhatsApp.</p>
                 </div>
-
-                <div class="card">
-                    <h3>💰 Os preços podem variar?</h3>
-                    <p>Os preços exibidos são os valores base. Serviços em cabelos muito longos ou com necessidades especiais podem ter um acréscimo. Sempre informamos antes de iniciar o procedimento.</p>
-                </div>
-
-                <div class="card">
-                    <h3>💆‍♀️ Preciso chegar com antecedência?</h3>
-                    <p>Recomendamos chegar com 5 a 10 minutos de antecedência para o preenchimento do cadastro na primeira visita. Após isso, pode chegar no horário exato do agendamento.</p>
-                </div>
-
-            </div>
-
-            <div class="centralizado margem-topo">
-                <a href="agendamento.html" class="btn btn-primario">Agendar Agora</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== RODAPÉ ===== -->
+    <!-- CTA FINAL -->
+    <div class="cta-final">
+        <h2>Pronta para o seu <span>Glow Up?</span></h2>
+        <p>Escolha seu serviço favorito e agende agora mesmo.</p>
+        <a href="agendamento.html" class="btn btn-rosa"><i class="fa-solid fa-calendar-check"></i> Agendar Agora</a>
+        <a href="redes.html" class="btn btn-secundario"><i class="fa-solid fa-share-nodes"></i> Nossas Redes</a>
+    </div>
+
+    <!-- RODAPÉ -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-logo">Beauty<span>Book</span></div>
-            <div class="footer-links">
-                <a href="index.html">Início</a>
-                <a href="servicos.html">Serviços</a>
-                <a href="agendamento.html">Agendar</a>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo"><i class="fa-solid fa-spa" style="color:var(--cor-rosa);"></i> Agenda <span>Glow Up</span></div>
+                <p class="footer-desc">Beleza, cuidado e sofisticação em um só lugar.</p>
             </div>
-            <p class="footer-copy">© 2026 BeautyBook — Projeto ADS 1º Semestre. Desenvolvido com HTML e CSS.</p>
+            <div class="footer-col">
+                <h4>Páginas</h4>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="agendamento.html">Agendar</a></li>
+                    <li><a href="redes.html">Redes Sociais</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="servicos.html">Cabelo</a></li>
+                    <li><a href="servicos.html">Unhas</a></li>
+                    <li><a href="servicos.html">Sobrancelha</a></li>
+                    <li><a href="servicos.html">Maquiagem</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="redes.html"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="redes.html"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="redes.html"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
+                </ul>
+            </div>
         </div>
+        <p class="footer-copy">© 2026 Agenda Glow Up — Projeto ADS 1º Semestre. Desenvolvido com HTML e CSS.</p>
     </footer>
 
 </body>
