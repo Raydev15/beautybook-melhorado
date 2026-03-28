@@ -3,302 +3,483 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento — BeautyBook</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Agendamento — Agenda Glow Up</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .horarios-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .horario-btn {
+            padding: 10px;
+            border: 2px solid var(--cor-borda);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #fff;
+            color: var(--cor-secundaria);
+            transition: all 0.2s;
+        }
+
+        .horario-btn:hover {
+            border-color: var(--cor-primaria);
+            background: #fdf2f8;
+        }
+
+        .horario-btn.selecionado {
+            background: linear-gradient(135deg, var(--cor-primaria), #7c3aed);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .horario-btn.ocupado {
+            background: #f3f4f6;
+            color: #9ca3af;
+            cursor: not-allowed;
+            text-decoration: line-through;
+            border-color: #e5e7eb;
+        }
+
+        .confirmacao {
+            display: none;
+            background: linear-gradient(135deg, #fdf2f8, #f5f0ff);
+            border: 2px solid var(--cor-rosa);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .confirmacao.visivel {
+            display: block;
+        }
+
+        .confirmacao-icone {
+            font-size: 60px;
+            color: var(--cor-primaria);
+            margin-bottom: 16px;
+        }
+
+        .confirmacao h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--cor-secundaria);
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .confirmacao-detalhes {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px;
+            margin: 20px auto;
+            max-width: 480px;
+            text-align: left;
+            box-shadow: 0 4px 20px rgba(157,23,77,0.08);
+        }
+
+        .detalhe-linha {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--cor-borda);
+            font-size: 14px;
+        }
+
+        .detalhe-linha:last-child {
+            border-bottom: none;
+        }
+
+        .detalhe-linha i {
+            color: var(--cor-primaria);
+            width: 20px;
+            text-align: center;
+        }
+
+        .detalhe-linha strong {
+            color: var(--cor-secundaria);
+            min-width: 100px;
+        }
+
+        .email-simulado {
+            background: #fff;
+            border: 1px solid var(--cor-borda);
+            border-radius: 14px;
+            padding: 24px;
+            margin: 20px auto;
+            max-width: 480px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .email-header {
+            border-bottom: 1px solid var(--cor-borda);
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+        }
+
+        .email-header p {
+            color: #666;
+            margin: 3px 0;
+        }
+
+        .email-header strong {
+            color: var(--cor-secundaria);
+        }
+
+        @media (max-width: 600px) {
+            .horarios-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- ===== CABEÇALHO ===== -->
+    <!-- CABEÇALHO -->
     <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icone-box">
-                    <i class="fa-solid fa-spa"></i>
+        <a href="index.html" class="logo">
+            <div class="logo-icone"><i class="fa-solid fa-spa"></i></div>
+            Agenda <span>Glow Up</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="agendamento.html" class="ativo">Agendar</a></li>
+                <li><a href="redes.html">Redes Sociais</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Faça seu <span>Agendamento</span></h1>
+        <p>Preencha o formulário abaixo e confirme seu horário em segundos.</p>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <section>
+        <div class="container">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:start;">
+
+                <!-- FORMULÁRIO -->
+                <div class="card" id="form-area">
+                    <h2 style="font-family:'Playfair Display',serif; color:var(--cor-secundaria); margin-bottom:22px; font-size:22px;">
+                        <i class="fa-solid fa-calendar-plus" style="color:var(--cor-primaria);"></i> Seus Dados
+                    </h2>
+
+                    <div class="form-grupo">
+                        <label><i class="fa-solid fa-user" style="color:var(--cor-primaria);"></i> Nome Completo</label>
+                        <input type="text" id="nome" placeholder="Ex: Maria Silva">
+                    </div>
+
+                    <div class="form-grupo">
+                        <label><i class="fa-solid fa-envelope" style="color:var(--cor-primaria);"></i> E-mail</label>
+                        <input type="email" id="email" placeholder="seu@email.com">
+                    </div>
+
+                    <div class="form-grupo">
+                        <label><i class="fa-brands fa-whatsapp" style="color:var(--cor-primaria);"></i> WhatsApp</label>
+                        <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+                    </div>
+
+                    <div class="form-grupo">
+                        <label><i class="fa-solid fa-scissors" style="color:var(--cor-primaria);"></i> Serviço</label>
+                        <select id="servico">
+                            <option value="">— Selecione um serviço —</option>
+                            <optgroup label="Cabelo">
+                                <option>Corte Feminino — R$ 60</option>
+                                <option>Coloração Completa — R$ 120</option>
+                                <option>Hidratação Profunda — R$ 80</option>
+                                <option>Escova Progressiva — R$ 50</option>
+                            </optgroup>
+                            <optgroup label="Unhas">
+                                <option>Manicure Completa — R$ 35</option>
+                                <option>Pedicure Completa — R$ 40</option>
+                                <option>Unhas em Gel — R$ 90</option>
+                                <option>Nail Art — R$ 60</option>
+                            </optgroup>
+                            <optgroup label="Sobrancelha">
+                                <option>Design de Sobrancelha — R$ 25</option>
+                                <option>Henna — R$ 35</option>
+                                <option>Laminação — R$ 70</option>
+                            </optgroup>
+                            <optgroup label="Maquiagem">
+                                <option>Maquiagem Social — R$ 100</option>
+                                <option>Maquiagem para Festa — R$ 120</option>
+                            </optgroup>
+                            <optgroup label="Estética Facial">
+                                <option>Limpeza de Pele — R$ 90</option>
+                                <option>Hidratação Facial — R$ 80</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label><i class="fa-solid fa-user-nurse" style="color:var(--cor-primaria);"></i> Profissional</label>
+                        <select id="profissional">
+                            <option value="">— Qualquer profissional —</option>
+                            <option>Ana Paula — Cabelo e Coloração</option>
+                            <option>Beatriz — Unhas e Nail Art</option>
+                            <option>Carla — Sobrancelha e Estética</option>
+                            <option>Daniela — Maquiagem e Depilação</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label><i class="fa-solid fa-calendar-days" style="color:var(--cor-primaria);"></i> Data</label>
+                        <input type="date" id="data">
+                    </div>
+
+                    <div class="form-grupo">
+                        <label><i class="fa-solid fa-clock" style="color:var(--cor-primaria);"></i> Horário</label>
+                        <div class="horarios-grid">
+                            <div class="horario-btn" onclick="selecionarHorario(this, '09:00')">09:00</div>
+                            <div class="horario-btn ocupado">10:00</div>
+                            <div class="horario-btn" onclick="selecionarHorario(this, '11:00')">11:00</div>
+                            <div class="horario-btn ocupado">12:00</div>
+                            <div class="horario-btn" onclick="selecionarHorario(this, '13:00')">13:00</div>
+                            <div class="horario-btn" onclick="selecionarHorario(this, '14:00')">14:00</div>
+                            <div class="horario-btn ocupado">15:00</div>
+                            <div class="horario-btn" onclick="selecionarHorario(this, '16:00')">16:00</div>
+                            <div class="horario-btn" onclick="selecionarHorario(this, '17:00')">17:00</div>
+                        </div>
+                        <input type="hidden" id="horario-selecionado">
+                    </div>
+
+                    <button onclick="confirmarAgendamento()" class="btn btn-primario" style="width:100%; font-size:15px; padding:15px;">
+                        <i class="fa-solid fa-circle-check"></i> Confirmar Agendamento
+                    </button>
                 </div>
-                <span class="logo-texto">Beauty<span>Book</span></span>
-            </a>
-            <nav>
+
+                <!-- INFORMAÇÕES DO SALÃO -->
+                <div>
+                    <div class="card" style="margin-bottom:20px;">
+                        <h3 style="color:var(--cor-secundaria); margin-bottom:16px; font-family:'Playfair Display',serif;">
+                            <i class="fa-solid fa-location-dot" style="color:var(--cor-primaria);"></i> Localização
+                        </h3>
+                        <p style="font-size:14px; color:#555; margin-bottom:6px;"><strong>Endereço:</strong> Rua das Flores, 123 — Centro</p>
+                        <p style="font-size:14px; color:#555; margin-bottom:6px;"><strong>Cidade:</strong> São Paulo — SP</p>
+                        <p style="font-size:14px; color:#555;"><strong>CEP:</strong> 01310-100</p>
+                    </div>
+
+                    <div class="card" style="margin-bottom:20px;">
+                        <h3 style="color:var(--cor-secundaria); margin-bottom:16px; font-family:'Playfair Display',serif;">
+                            <i class="fa-solid fa-clock" style="color:var(--cor-primaria);"></i> Horários
+                        </h3>
+                        <p style="font-size:14px; color:#555; margin-bottom:6px;"><strong>Segunda a Sexta:</strong> 09h às 18h</p>
+                        <p style="font-size:14px; color:#555;"><strong>Sábado:</strong> 09h às 15h</p>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="color:var(--cor-secundaria); margin-bottom:16px; font-family:'Playfair Display',serif;">
+                            <i class="fa-solid fa-circle-info" style="color:var(--cor-primaria);"></i> Políticas
+                        </h3>
+                        <ul style="list-style:none; font-size:13px; color:#555; line-height:2;">
+                            <li><i class="fa-solid fa-check" style="color:var(--cor-primaria); margin-right:6px;"></i>Cancele com 2h de antecedência</li>
+                            <li><i class="fa-solid fa-check" style="color:var(--cor-primaria); margin-right:6px;"></i>Chegue 5 minutos antes</li>
+                            <li><i class="fa-solid fa-check" style="color:var(--cor-primaria); margin-right:6px;"></i>Pagamento no dia do serviço</li>
+                            <li><i class="fa-solid fa-check" style="color:var(--cor-primaria); margin-right:6px;"></i>Aceitamos Pix, cartão e dinheiro</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONFIRMAÇÃO -->
+            <div class="confirmacao" id="confirmacao">
+                <div class="confirmacao-icone"><i class="fa-solid fa-circle-check"></i></div>
+                <h2>Agendamento Confirmado! 🎉</h2>
+                <p style="color:var(--cor-texto-suave); margin-bottom:20px;">Seu horário foi reservado com sucesso. Veja os detalhes abaixo:</p>
+
+                <div class="confirmacao-detalhes">
+                    <div class="detalhe-linha">
+                        <i class="fa-solid fa-user"></i>
+                        <strong>Cliente:</strong>
+                        <span id="conf-nome">—</span>
+                    </div>
+                    <div class="detalhe-linha">
+                        <i class="fa-solid fa-scissors"></i>
+                        <strong>Serviço:</strong>
+                        <span id="conf-servico">—</span>
+                    </div>
+                    <div class="detalhe-linha">
+                        <i class="fa-solid fa-user-nurse"></i>
+                        <strong>Profissional:</strong>
+                        <span id="conf-profissional">—</span>
+                    </div>
+                    <div class="detalhe-linha">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <strong>Data:</strong>
+                        <span id="conf-data">—</span>
+                    </div>
+                    <div class="detalhe-linha">
+                        <i class="fa-solid fa-clock"></i>
+                        <strong>Horário:</strong>
+                        <span id="conf-horario">—</span>
+                    </div>
+                    <div class="detalhe-linha">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <strong>Local:</strong>
+                        <span>Rua das Flores, 123 — Centro, São Paulo</span>
+                    </div>
+                </div>
+
+                <p style="font-size:13px; color:var(--cor-texto-suave); margin-bottom:16px;">
+                    <i class="fa-solid fa-envelope" style="color:var(--cor-primaria);"></i>
+                    Um e-mail de confirmação foi enviado para <strong id="conf-email">—</strong>
+                </p>
+
+                <div class="email-simulado">
+                    <div class="email-header">
+                        <p><strong>De:</strong> contato@agendaglowup.com.br</p>
+                        <p><strong>Para:</strong> <span id="email-para">—</span></p>
+                        <p><strong>Assunto:</strong> ✅ Confirmação de Agendamento — Agenda Glow Up</p>
+                    </div>
+                    <p>Olá, <strong id="email-nome">—</strong>! 💕</p>
+                    <br>
+                    <p>Seu agendamento foi confirmado com sucesso!</p>
+                    <br>
+                    <p>📋 <strong>Serviço:</strong> <span id="email-servico">—</span></p>
+                    <p>📅 <strong>Data:</strong> <span id="email-data">—</span></p>
+                    <p>⏰ <strong>Horário:</strong> <span id="email-horario">—</span></p>
+                    <p>📍 <strong>Local:</strong> Rua das Flores, 123 — Centro, São Paulo</p>
+                    <br>
+                    <p>Lembre-se de chegar 5 minutos antes. Em caso de imprevisto, cancele com 2h de antecedência pelo WhatsApp.</p>
+                    <br>
+                    <p>Até lá! ✨<br><strong>Equipe Agenda Glow Up</strong></p>
+                </div>
+
+                <a href="index.html" class="btn btn-primario" style="margin-top:20px;">
+                    <i class="fa-solid fa-house"></i> Voltar ao Início
+                </a>
+                <a href="redes.html" class="btn btn-rosa" style="margin-top:20px;">
+                    <i class="fa-solid fa-share-nodes"></i> Nossas Redes
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="secao-rosa">
+        <div class="container">
+            <div class="titulo-secao">
+                <h2>Dúvidas sobre o <span>Agendamento</span></h2>
+            </div>
+            <div class="grid-2">
+                <div class="card faq-card">
+                    <h3><i class="fa-solid fa-rotate" style="color:var(--cor-primaria); margin-right:8px;"></i>Posso remarcar meu horário?</h3>
+                    <p>Sim! Entre em contato pelo WhatsApp com pelo menos 2 horas de antecedência e reagendamos sem custo.</p>
+                </div>
+                <div class="card faq-card">
+                    <h3><i class="fa-solid fa-envelope" style="color:var(--cor-primaria); margin-right:8px;"></i>Recebo confirmação por e-mail?</h3>
+                    <p>Sim! Após confirmar, você recebe um e-mail com todos os detalhes: serviço, data, horário e local.</p>
+                </div>
+                <div class="card faq-card">
+                    <h3><i class="fa-solid fa-credit-card" style="color:var(--cor-primaria); margin-right:8px;"></i>Preciso pagar para agendar?</h3>
+                    <p>Não! O agendamento é gratuito. O pagamento é feito somente no dia do atendimento.</p>
+                </div>
+                <div class="card faq-card">
+                    <h3><i class="fa-solid fa-clock" style="color:var(--cor-primaria); margin-right:8px;"></i>Quanto tempo dura cada serviço?</h3>
+                    <p>Depende do serviço. Manicure leva ~40min, corte ~1h, coloração ~2h. Informamos ao confirmar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo"><i class="fa-solid fa-spa" style="color:var(--cor-rosa);"></i> Agenda <span>Glow Up</span></div>
+                <p class="footer-desc">Beleza, cuidado e sofisticação em um só lugar.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Páginas</h4>
                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="servicos.html">Serviços</a></li>
-                    <li><a href="agendamento.html" class="ativo">Agendar</a></li>
+                    <li><a href="agendamento.html">Agendar</a></li>
+                    <li><a href="redes.html">Redes Sociais</a></li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- ===== HERO DA PÁGINA ===== -->
-    <div class="page-hero">
-        <h1>Faça seu <span>Agendamento</span></h1>
-        <p>Preencha o formulário abaixo para simular um agendamento. Rápido e sem complicação.</p>
-    </div>
-
-    <!-- ===== FORMULÁRIO ===== -->
-    <section>
-        <div class="container">
-
-            <!-- Aviso informativo -->
-            <div style="background-color: #fff8f0; border: 2px solid var(--cor-destaque2); border-radius: 12px; padding: 18px 25px; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; margin-bottom: 40px;">
-                <p style="color: var(--cor-texto-suave); font-size: 14px; text-align: center;">
-                    📌 <strong>Simulação de Agendamento</strong> — Este formulário demonstra como seria o processo real de agendamento online. Os campos são apenas ilustrativos para o projeto.
-                </p>
             </div>
-
-            <div class="form-agendamento">
-                <h2>Novo Agendamento</h2>
-                <p class="subtitulo">Preencha os dados abaixo para confirmar seu horário</p>
-
-                <!-- Dados pessoais -->
-                <h3 style="font-size: 16px; color: var(--cor-destaque); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--cor-borda);">
-                    👤 Dados Pessoais
-                </h3>
-
-                <div class="form-linha">
-                    <div class="form-grupo">
-                        <label>Nome completo <span>*</span></label>
-                        <input type="text" placeholder="Ex: Ana Paula Silva">
-                    </div>
-                    <div class="form-grupo">
-                        <label>Telefone / WhatsApp <span>*</span></label>
-                        <input type="tel" placeholder="(11) 99999-9999">
-                    </div>
-                </div>
-
-                <div class="form-grupo">
-                    <label>E-mail</label>
-                    <input type="email" placeholder="seuemail@exemplo.com">
-                </div>
-
-                <!-- Serviço -->
-                <h3 style="font-size: 16px; color: var(--cor-destaque); margin: 30px 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--cor-borda);">
-                    💅 Serviço Desejado
-                </h3>
-
-                <div class="form-grupo">
-                    <label>Categoria do serviço <span>*</span></label>
-                    <select>
-                        <option value="">— Selecione uma categoria —</option>
-                        <option value="unhas">💅 Unhas (Manicure / Pedicure)</option>
-                        <option value="cabelo">✂️ Cabelo (Corte / Coloração / Tratamento)</option>
-                        <option value="sobrancelha">🪮 Sobrancelha / Cílios</option>
-                        <option value="estetica">🌸 Estética Facial</option>
-                        <option value="combo">✨ Combo / Pacote</option>
-                    </select>
-                </div>
-
-                <div class="form-grupo">
-                    <label>Serviço específico <span>*</span></label>
-                    <select>
-                        <option value="">— Selecione o serviço —</option>
-                        <optgroup label="Unhas">
-                            <option>Manicure — Esmaltação comum (R$ 30)</option>
-                            <option>Manicure — Esmaltação em gel (R$ 60)</option>
-                            <option>Pedicure simples (R$ 40)</option>
-                            <option>Combo Mãos + Pés simples (R$ 60)</option>
-                        </optgroup>
-                        <optgroup label="Cabelo">
-                            <option>Corte simples (R$ 50)</option>
-                            <option>Corte + escova (R$ 80)</option>
-                            <option>Coloração simples (R$ 120)</option>
-                            <option>Hidratação capilar (R$ 70)</option>
-                        </optgroup>
-                        <optgroup label="Sobrancelha">
-                            <option>Design com linha (R$ 25)</option>
-                            <option>Design com henna (R$ 45)</option>
-                            <option>Laminação de sobrancelha (R$ 80)</option>
-                        </optgroup>
-                        <optgroup label="Estética">
-                            <option>Limpeza de pele simples (R$ 80)</option>
-                            <option>Extensão de cílios fio a fio (R$ 180)</option>
-                            <option>Lifting de cílios (R$ 100)</option>
-                        </optgroup>
-                    </select>
-                </div>
-
-                <!-- Data e horário -->
-                <h3 style="font-size: 16px; color: var(--cor-destaque); margin: 30px 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--cor-borda);">
-                    📅 Data e Horário
-                </h3>
-
-                <div class="form-linha">
-                    <div class="form-grupo">
-                        <label>Data preferida <span>*</span></label>
-                        <input type="date">
-                    </div>
-                    <div class="form-grupo">
-                        <label>Horário preferido <span>*</span></label>
-                        <select>
-                            <option value="">— Selecione o horário —</option>
-                            <option>08:00</option>
-                            <option>08:30</option>
-                            <option>09:00</option>
-                            <option>09:30</option>
-                            <option>10:00</option>
-                            <option>10:30</option>
-                            <option>11:00</option>
-                            <option>11:30</option>
-                            <option>13:00</option>
-                            <option>13:30</option>
-                            <option>14:00</option>
-                            <option>14:30</option>
-                            <option>15:00</option>
-                            <option>15:30</option>
-                            <option>16:00</option>
-                            <option>16:30</option>
-                            <option>17:00</option>
-                            <option>17:30</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Observações -->
-                <div class="form-grupo">
-                    <label>Observações (opcional)</label>
-                    <textarea placeholder="Ex: Tenho alergia a determinados produtos, prefiro determinada profissional, etc."></textarea>
-                </div>
-
-                <!-- Como conheceu -->
-                <div class="form-grupo">
-                    <label>Como nos conheceu?</label>
-                    <select>
-                        <option value="">— Selecione —</option>
-                        <option>Indicação de amiga/familiar</option>
-                        <option>Instagram / Redes Sociais</option>
-                        <option>Google</option>
-                        <option>Já sou cliente</option>
-                        <option>Outro</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="form-submit">
-                    ✅ Confirmar Agendamento
-                </button>
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="servicos.html">Cabelo</a></li>
+                    <li><a href="servicos.html">Unhas</a></li>
+                    <li><a href="servicos.html">Sobrancelha</a></li>
+                    <li><a href="servicos.html">Maquiagem</a></li>
+                </ul>
             </div>
-
-            <!-- Confirmação visual (simulada) -->
-            <div class="confirmacao-box" style="max-width: 700px; margin: 0 auto; margin-top: 30px;">
-                <span class="check">🎉</span>
-                <h3>Agendamento Simulado com Sucesso!</h3>
-                <p>Em um sistema real, você receberia uma confirmação por WhatsApp ou e-mail com todos os detalhes do seu agendamento. O salão entraria em contato para confirmar a disponibilidade.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ===== INFORMAÇÕES DO SALÃO ===== -->
-    <section style="background-color: var(--cor-secundaria);">
-        <div class="container">
-            <div class="titulo-secao">
-                <h2>Informações <span>Importantes</span></h2>
-                <div class="linha-divisoria"></div>
-            </div>
-
-            <div class="grid-3">
-                <div class="card centralizado">
-                    <div class="card-icone">🕐</div>
-                    <h3>Horário de Funcionamento</h3>
-                    <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 17h<br>Domingo: Fechado</p>
-                </div>
-                <div class="card centralizado">
-                    <div class="card-icone">📍</div>
-                    <h3>Localização</h3>
-                    <p>Rua das Flores, 123<br>Centro — São Paulo, SP<br>CEP: 01000-000</p>
-                </div>
-                <div class="card centralizado">
-                    <div class="card-icone">📱</div>
-                    <h3>Contato</h3>
-                    <p>WhatsApp: (11) 99999-9999<br>E-mail: contato@beautybook.com<br>Instagram: @beautybook</p>
-                </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="redes.html"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="redes.html"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="redes.html"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <!-- ===== POLÍTICAS ===== -->
-    <section>
-        <div class="container">
-            <div class="titulo-secao">
-                <h2>Políticas de <span>Agendamento</span></h2>
-                <div class="linha-divisoria"></div>
-            </div>
-
-            <div class="grid-2">
-                <div class="card">
-                    <div class="card-icone">⏰</div>
-                    <h3>Cancelamento</h3>
-                    <p>Cancelamentos devem ser feitos com pelo menos <strong>2 horas de antecedência</strong>. Após esse prazo, pode ser cobrada uma taxa de 30% do valor do serviço.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icone">🕐</div>
-                    <h3>Atraso</h3>
-                    <p>Toleramos até <strong>10 minutos de atraso</strong>. Após esse tempo, o horário pode ser realocado para outra cliente, dependendo da agenda do dia.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icone">💳</div>
-                    <h3>Formas de Pagamento</h3>
-                    <p>Aceitamos <strong>Pix, dinheiro, cartão de débito e crédito</strong> (parcelamento em até 3x sem juros para serviços acima de R$ 100).</p>
-                </div>
-                <div class="card">
-                    <div class="card-icone">🔄</div>
-                    <h3>Reagendamento</h3>
-                    <p>Reagendamentos são permitidos <strong>até 24 horas antes</strong> do horário marcado, sem nenhuma taxa adicional.</p>
-                </div>
-            </div>
-
-            <div class="centralizado margem-topo">
-                <a href="servicos.html" class="btn btn-secundario">Ver Todos os Serviços</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== PERGUNTAS FREQUENTES ===== -->
-    <section style="background-color: var(--cor-secundaria);">
-        <div class="container">
-            <div class="titulo-secao">
-                <h2>Perguntas <span>Frequentes</span></h2>
-                <div class="linha-divisoria"></div>
-                <p>Dúvidas sobre o agendamento? Veja as respostas abaixo.</p>
-            </div>
-
-            <div class="grid-2">
-
-                <div class="card">
-                    <h3>📱 Posso agendar pelo celular?</h3>
-                    <p>Sim! O site funciona perfeitamente no celular. Basta acessar pelo navegador do seu smartphone e preencher o formulário de agendamento normalmente.</p>
-                </div>
-
-                <div class="card">
-                    <h3>🔄 Posso remarcar meu horário?</h3>
-                    <p>Sim! Remarcações são permitidas com até 24 horas de antecedência, sem nenhuma taxa adicional. Entre em contato pelo WhatsApp: (11) 99999-9999.</p>
-                </div>
-
-                <div class="card">
-                    <h3>✅ Como sei que meu agendamento foi confirmado?</h3>
-                    <p>Após enviar o formulário, você recebe um resumo visual na tela com todos os detalhes. Em um sistema real, a confirmação seria enviada por WhatsApp ou e-mail.</p>
-                </div>
-
-                <div class="card">
-                    <h3>👥 Posso agendar para mais de uma pessoa?</h3>
-                    <p>Sim! Para grupos ou pacotes em conjunto (como mãe e filha), entre em contato diretamente pelo WhatsApp para verificarmos a disponibilidade e montar o melhor horário.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== RODAPÉ ===== -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">Beauty<span>Book</span></div>
-            <div class="footer-links">
-                <a href="index.html">Início</a>
-                <a href="servicos.html">Serviços</a>
-                <a href="agendamento.html">Agendar</a>
-            </div>
-            <p class="footer-copy">© 2026 BeautyBook — Projeto ADS 1º Semestre. Desenvolvido com HTML e CSS.</p>
-        </div>
+        <p class="footer-copy">© 2026 Agenda Glow Up — Projeto ADS 1º Semestre. Desenvolvido com HTML e CSS.</p>
     </footer>
+
+    <script>
+        var horarioEscolhido = '';
+
+        function selecionarHorario(el, hora) {
+            document.querySelectorAll('.horario-btn:not(.ocupado)').forEach(function(b) {
+                b.classList.remove('selecionado');
+            });
+            el.classList.add('selecionado');
+            horarioEscolhido = hora;
+            document.getElementById('horario-selecionado').value = hora;
+        }
+
+        function confirmarAgendamento() {
+            var nome = document.getElementById('nome').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var servico = document.getElementById('servico').value;
+            var profissional = document.getElementById('profissional').value || 'Qualquer profissional disponível';
+            var data = document.getElementById('data').value;
+
+            if (!nome || !email || !servico || !data || !horarioEscolhido) {
+                alert('Por favor, preencha todos os campos e selecione um horário!');
+                return;
+            }
+
+            // Formatar data
+            var partes = data.split('-');
+            var dataFormatada = partes[2] + '/' + partes[1] + '/' + partes[0];
+
+            // Preencher confirmação
+            document.getElementById('conf-nome').textContent = nome;
+            document.getElementById('conf-servico').textContent = servico;
+            document.getElementById('conf-profissional').textContent = profissional;
+            document.getElementById('conf-data').textContent = dataFormatada;
+            document.getElementById('conf-horario').textContent = horarioEscolhido;
+            document.getElementById('conf-email').textContent = email;
+
+            // Preencher e-mail simulado
+            document.getElementById('email-para').textContent = email;
+            document.getElementById('email-nome').textContent = nome;
+            document.getElementById('email-servico').textContent = servico;
+            document.getElementById('email-data').textContent = dataFormatada;
+            document.getElementById('email-horario').textContent = horarioEscolhido;
+
+            // Mostrar confirmação
+            document.getElementById('form-area').style.display = 'none';
+            var conf = document.getElementById('confirmacao');
+            conf.classList.add('visivel');
+            conf.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>
